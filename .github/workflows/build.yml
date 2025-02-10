@@ -15,7 +15,8 @@ jobs:
 
       - name: Install Windows Driver Kit (WDK)
         run: |
-          choco install windows-driver-kit
+          Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?linkid=2128854 -OutFile WDKSetup.exe
+          Start-Process -FilePath .\WDKSetup.exe -ArgumentList "/quiet /norestart" -NoNewWindow -Wait
 
       - name: Build HidGuardian
         run: msbuild HidGuardian.sln /t:Build /p:Configuration=Release
