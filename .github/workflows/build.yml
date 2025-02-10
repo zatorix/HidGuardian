@@ -13,9 +13,9 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Install Windows Driver Kit (WDK)
+      - name: Install WDK for Windows 7
         run: |
-          Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?linkid=2128854 -OutFile WDKSetup.exe
+          Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?linkid=528353 -OutFile WDKSetup.exe
           Start-Process -FilePath .\WDKSetup.exe -ArgumentList "/quiet /norestart" -NoNewWindow -Wait
 
       - name: Build HidGuardian (x64)
