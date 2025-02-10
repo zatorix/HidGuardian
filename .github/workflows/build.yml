@@ -18,8 +18,8 @@ jobs:
           Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?linkid=2128854 -OutFile WDKSetup.exe
           Start-Process -FilePath .\WDKSetup.exe -ArgumentList "/quiet /norestart" -NoNewWindow -Wait
 
-      - name: Build HidGuardian
-        run: msbuild HidGuardian.sln /t:Build /p:Configuration=Release
+      - name: Build HidGuardian (x64)
+        run: msbuild HidGuardian.sln /t:Build /p:Configuration=Release /p:Platform=x64
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
