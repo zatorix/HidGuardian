@@ -1,0 +1,21 @@
+name: Build HidGuardian
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
+
+      - name: Install Windows Driver Kit (WDK)
+        run: |
+          choco install windows-driver-kit
+
+      - name: Build HidGuardian
+        run: msbuild HidGuardian.sln /t:Build /p:Configuration=Release
