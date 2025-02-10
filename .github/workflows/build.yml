@@ -20,3 +20,12 @@ jobs:
 
       - name: Build HidGuardian
         run: msbuild HidGuardian.sln /t:Build /p:Configuration=Release
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: HidGuardian-Build
+          path: |
+            x64/Release/*.sys
+            x64/Release/*.cat
+            x64/Release/*.inf
